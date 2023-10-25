@@ -1,33 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Link, Route, Routes, useParams } from 'react-router-dom'
 
+const Home = () => <h2>Home</h2>
+const SearchPage = () => {
+  const Animes = [
+    'Bleach',
+    'Naruto',
+    'Swort Art Online',
+    'Boku no piko',
+    'Goblin Slayer',
+    'Dragon Ball',
+  ]
+  return (
+    <div>
+      <h2>Search Page</h2>
+      <ul>
+        {Animes.map((anime) => (
+          <li key={anime}>
+            <Link to={`/anime/${anime}`}>{anime}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+const Anime = () => {
+  const { name } = useParams()
+  return (
+    <div>
+      <h2>Anime</h2>
+      <p>Anime Seleccionado: {name}</p>
+    </div>
+  )
+}
 function App() {
-  const [count, setCount] = useState(0)
-
+  const anonKey = import.meta.env.VITE_ANON_KEY
+  const url = import.meta.env.VITE_URL
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <header>
+        <h1>TSF Anime</h1>
+        <nav>
+          <ul>
+            <li>
+              <Link to='/'>Home</Link>
+            </li>
+            <li>
+              <Link to='/search-page'>Catalogo</Link>
+            </li>
+            <li>
+              <Link to='/'>Iniciar</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/search-page' element={<SearchPage />} />
+        <Route path='/anime/:name' element={<Anime />} />
+        <Route path='*' element={<h1>Not Found</h1>} />
+      </Routes>
     </>
   )
 }

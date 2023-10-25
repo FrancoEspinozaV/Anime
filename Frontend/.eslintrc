@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "space-before-function-paren": "off"
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "presets": ["@babel/preset-react"]
+}
