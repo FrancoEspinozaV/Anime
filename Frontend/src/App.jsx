@@ -1,4 +1,5 @@
 import { Link, Route, Routes, useParams } from 'react-router-dom'
+import { Login } from './Page/login'
 
 const Home = () => <h2>Home</h2>
 const SearchPage = () => {
@@ -48,7 +49,7 @@ function App() {
               <Link to='/search-page'>Catalogo</Link>
             </li>
             <li>
-              <Link to='/'>Iniciar</Link>
+              <Link to='/login'>Iniciar</Link>
             </li>
           </ul>
         </nav>
@@ -57,6 +58,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/search-page' element={<SearchPage />} />
         <Route path='/anime/:name' element={<Anime />} />
+        <Route path='/login' element={<Login />} />
         <Route path='*' element={<h1>Not Found</h1>} />
       </Routes>
     </>
