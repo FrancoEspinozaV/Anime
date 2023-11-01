@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 export function Nav() {
   return (
     <header>
-      <h1>TSF Anime</h1>
+      <h1>
+        <Link to='/'>TSF Anime</Link>
+      </h1>
       <nav>
         <ul>
           <li>
