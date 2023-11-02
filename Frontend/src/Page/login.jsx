@@ -1,7 +1,5 @@
 
 export function Login() {
-  const anonKey = import.meta.env.VITE_ANON_KEY
-  const url = import.meta.env.VITE_URL
   return (
       <div className="flex-container">
         <div className="caja">
