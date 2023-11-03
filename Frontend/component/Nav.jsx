@@ -1,6 +1,17 @@
 import { Link } from 'react-router-dom'
+import { supabase } from '../Supabase/supabase.config'
+import { useEffect, useState } from 'react'
 
 export function Nav() {
+  const [link, setLink] = useState(false)
+
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (!session) setLink(true)
+      else setLink(false)
+    })
+  }, [])
+
   return (
     <header>
       <h1>
@@ -15,7 +26,18 @@ export function Nav() {
             <Link to='/search-page'>Catalogo</Link>
           </li>
           <li>
-            <Link to='/login'>Iniciar</Link>
+            {link ? (
+              <Link to='/login'>Ingresar</Link>
+            ) : (
+              <button
+                className='simpleButton'
+                onClick={() => {
+                  supabase.auth.signOut()
+                }}
+              >
+                Salir
+              </button>
+            )}
           </li>
         </ul>
       </nav>
