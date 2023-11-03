@@ -14,20 +14,16 @@
     background-color: rgb(32, 51, 68);
     opacity: 0.92;
     color: black;
-    width: 20%;
-    height: 50%;
+    width: 400px;
+    height: 500px;
     line-height: 120px;
     margin: 5px;
     border-radius: 5%;
     text-align: center;
-}
-
-.Form{
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
-    font-size: large;
 }
 
 .input{
