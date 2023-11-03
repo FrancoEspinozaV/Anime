@@ -44,3 +44,10 @@ a:visited {
 nav > ul > li {
   padding: 10px;
 }
+
+.simpleButton {
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

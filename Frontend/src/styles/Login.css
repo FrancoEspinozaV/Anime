@@ -1,73 +1,72 @@
-.flex-container{
-    background-image:url("https://cdn.discordapp.com/attachments/554869165413105694/1169468518144692264/flat-chinese-new-year-festival-celebration-background-china-city-old-houses-chinese_625492-24164.png?ex=6555836e&is=65430e6e&hm=b8ca047df2c3c25a8019d58cb0774ee2cf9c2e1235736c8605471a1753012289&");
-    background-size: cover;
-    width:100%;
-    height: 93.8vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.flex-container {
+  background-image: url('https://cdn.discordapp.com/attachments/554869165413105694/1169468518144692264/flat-chinese-new-year-festival-celebration-background-china-city-old-houses-chinese_625492-24164.png?ex=6555836e&is=65430e6e&hm=b8ca047df2c3c25a8019d58cb0774ee2cf9c2e1235736c8605471a1753012289&');
+  background-size: cover;
+  width: 100%;
+  height: 93.8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.caja{
-    border: 2px solid black;
-    background-color: rgb(32, 51, 68);
-    opacity: 0.92;
-    color: black;
-    width: 20%;
-    height: 50%;
-    line-height: 120px;
-    margin: 5px;
-    border-radius: 5%;
-    text-align: center;
+.caja {
+  border: 2px solid black;
+  background-color: rgb(32, 51, 68);
+  opacity: 0.92;
+  color: black;
+  width: 20%;
+  height: 50%;
+  line-height: 120px;
+  margin: 5px;
+  border-radius: 5%;
+  text-align: center;
 }
 
-.Form{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    font-size: large;
+.Form {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: large;
 }
 
-.input{
-    height: 25px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-
+.input {
+  height: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-.Large{
-    font-size: 3rem;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: white;
+.Large {
+  font-size: 3rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: white;
 }
 
-.submit{
-    border-radius: 20px;
-    width: 150px;
-    height: 20px;
-    color: black;
-    background-color: white;
+.submit {
+  border-radius: 20px;
+  width: 150px;
+  height: 20px;
+  color: black;
+  background-color: white;
 }
 
-.submit{
-    font-family: 'arial black';
-    color: #EDEDED !important;
-    font-size: 14px;
-    width: 160px;
-    height: auto;
-    text-shadow: 0px 0px 0px #7CACDE;
-    box-shadow: 1px 1px 1px #BEE2F9;
-    padding: 10px 25px;
-    border-radius: 10px;
-    background: #468CCF;
-    border: 2px solid #3866A3;
-    background: linear-gradient(to top, #63B8EE, #468CCF);
-    margin-bottom: 20px;
-  }
-  .submit:hover {
-    color: #14396A !important;
-    background: #468CCF;
-    background: linear-gradient(to top, #468CCF, #63B8EE);
-  }
+.submit {
+  font-family: 'arial black';
+  color: #ededed !important;
+  font-size: 14px;
+  width: 160px;
+  height: auto;
+  text-shadow: 0px 0px 0px #7cacde;
+  box-shadow: 1px 1px 1px #bee2f9;
+  padding: 10px 25px;
+  border-radius: 10px;
+  background: #468ccf;
+  border: 2px solid #3866a3;
+  background: linear-gradient(to top, #63b8ee, #468ccf);
+  margin-bottom: 20px;
+}
+.submit:hover {
+  color: #14396a !important;
+  background: #468ccf;
+  background: linear-gradient(to top, #468ccf, #63b8ee);
+}
