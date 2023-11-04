@@ -5,13 +5,16 @@ import { SearchPage } from '../src/Page/SearchPage'
 import { Anime } from '../src/Page/Anime'
 
 export function Rutas() {
+  const NotFound = () => {
+    return <h1>Not Found</h1>
+  }
   return (
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/search-page' element={<SearchPage />} />
       <Route path='/anime/:name' element={<Anime />} />
       <Route path='/login' element={<Login />} />
-      <Route path='*' element={<h1>Not Found</h1>} />
+      <Route path='*' element={<NotFound />} />
     </Routes>
   )
 }
