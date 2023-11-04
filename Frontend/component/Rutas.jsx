@@ -3,11 +3,8 @@ import { Login } from '../src/Page/Login'
 import { Home } from '../src/Page/Home'
 import { SearchPage } from '../src/Page/SearchPage'
 import { Anime } from '../src/Page/Anime'
-
+import { NotFound } from '../src/Page/NotFound'
 export function Rutas() {
-  const NotFound = () => {
-    return <h1>Not Found</h1>
-  }
   return (
     <Routes>
       <Route path='/' element={<Home />} />
