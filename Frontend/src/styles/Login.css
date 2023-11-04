@@ -8,21 +8,21 @@
   align-items: center;
 }
 
-.caja{
-    border: 2px solid black;
-    background-color: rgb(32, 51, 68);
-    opacity: 0.92;
-    color: black;
-    width: 400px;
-    height: 500px;
-    line-height: 120px;
-    margin: 5px;
-    border-radius: 5%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+.caja {
+  border: 2px solid black;
+  background-color: rgb(32, 51, 68);
+  opacity: 0.92;
+  color: black;
+  width: 400px;
+  height: 500px;
+  line-height: 120px;
+  margin: 5px;
+  border-radius: 5%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .input {
@@ -65,4 +65,8 @@
   color: #14396a !important;
   background: #468ccf;
   background: linear-gradient(to top, #468ccf, #63b8ee);
+}
+
+span {
+  color: white;
 }
