@@ -15,12 +15,27 @@ export function Login() {
   async function signUpNewUser(e) {
     e.preventDefault()
     try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          redirectTo: 'https://mail.google.com/mail',
+        },
+      })
+      if (error) console.log(error)
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function signInWithEmail(e) {
+    e.preventDefault()
+    try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
-      if (error) console.log(error)
-      console.log(data)
     } catch (error) {
       console.log(error)
     }
@@ -41,8 +56,11 @@ export function Login() {
             type='password'
             className='input'
           />
+          <button onClick={signInWithEmail} className='submit'>
+            Iniciar Sesión
+          </button>
           <button onClick={signUpNewUser} className='submit'>
-            Iniciar
+            Registrarse
           </button>
         </form>
       </div>
