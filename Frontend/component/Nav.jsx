@@ -29,14 +29,14 @@ export function Nav() {
             {link ? (
               <Link to='/login'>Ingresar</Link>
             ) : (
-              <button
-                className='simpleButton'
+              <Link
+                to='/login'
                 onClick={() => {
                   supabase.auth.signOut()
                 }}
               >
                 Salir
-              </button>
+              </Link>
             )}
           </li>
         </ul>
