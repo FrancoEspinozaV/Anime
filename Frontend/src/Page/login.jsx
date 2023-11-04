@@ -43,27 +43,27 @@ export function Login() {
 
   return (
     <div className='flex-container'>
-      <div className='caja'>
-        <form className='Form'>
-          <h2 className='Large'>Login</h2>
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            type='email'
-            className='input'
-          />
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            type='password'
-            className='input'
-          />
-          <button onClick={signInWithEmail} className='submit'>
-            Iniciar Sesión
-          </button>
-          <button onClick={signUpNewUser} className='submit'>
-            Registrarse
-          </button>
-        </form>
-      </div>
+      <form className='Form'>
+        <h2 className='Large'>Login</h2>
+        <input
+          onChange={(e) => setEmail(e.target.value)}
+          type='email'
+          className='input'
+          placeholder='   Correo electrónico'
+        />
+        <input
+          onChange={(e) => setPassword(e.target.value)}
+          type='password'
+          className='input'
+          placeholder='   Contraseña'
+        />
+        <button onClick={signInWithEmail} className='submit'>
+          Iniciar Sesión
+        </button>
+        <button onClick={signUpNewUser} className='submit'>
+          Registrarse
+        </button>
+      </form>
     </div>
   )
 }

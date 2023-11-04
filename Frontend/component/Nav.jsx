@@ -13,7 +13,7 @@ export function Nav() {
   }, [])
 
   return (
-    <header>
+    <header className='Header'>
       <h1>
         <Link to='/'>TSF Anime</Link>
       </h1>
