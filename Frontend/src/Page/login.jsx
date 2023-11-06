@@ -45,22 +45,24 @@ export function Login() {
     <div className='flex-container'>
       <form className='Form'>
         <h2 className='Large'>Login</h2>
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          type='email'
-          className='input'
-          placeholder='   Correo electrónico'
-        />
+        <div className='bar'>
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            type='email'
+            className='input'
+            placeholder='   Correo electrónico 📧'
+          />
+        </div>
         <input
           onChange={(e) => setPassword(e.target.value)}
           type='password'
           className='input'
-          placeholder='   Contraseña'
+          placeholder='   Contraseña 🔒'
         />
         <button onClick={signInWithEmail} className='submit'>
           Iniciar Sesión
         </button>
-        <button onClick={signUpNewUser} className='submit'>
+        <button onClick={signUpNewUser} className='submit adc'>
           Registrarse
         </button>
       </form>

@@ -15,17 +15,20 @@ export function Nav() {
   return (
     <header className='Header'>
       <h1>
-        <Link to='/'>TSF Anime</Link>
+        <Link to='/'>
+          TSF Anime
+          <img src='../src/img/LogoTSF.png' alt='x' className='imagen' />
+        </Link>
       </h1>
       <nav>
         <ul>
-          <li>
+          <li className='bordes'>
             <Link to='/'>Home</Link>
           </li>
           <li>
             <Link to='/search-page'>Catalogo</Link>
           </li>
-          <li>
+          <li className='bordes'>
             {link ? (
               <Link to='/login'>Ingresar</Link>
             ) : (
