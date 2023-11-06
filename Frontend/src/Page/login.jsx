@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '../../Supabase/supabase.config'
+import { useNavigate } from 'react-router-dom'
 
 const MessageEmail = () => {
   return (
@@ -14,6 +15,7 @@ export function Login() {
   const [emptyEmail, setEmptyEmail] = useState(false)
   const [emptyPassword, setEmptyPassword] = useState(false)
   const [isValidPassword, setIsValidPassword] = useState(true)
+  const navigate = useNavigate()
 
   async function signUpNewUser(e) {
     e.preventDefault()
@@ -41,10 +43,15 @@ export function Login() {
   async function signInWithEmail(e) {
     e.preventDefault()
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
+      if (error) console.log(error)
+
+      localStorage.setItem('isLoggedIn', true)
+      localStorage.setItem('useRol', 2)
+      navigate('/')
     } catch (error) {
       console.log(error)
     }

@@ -1,26 +1,13 @@
-import { useEffect } from 'react'
 import { Nav } from '../component/Nav'
 import { Rutas } from '../component/Rutas'
-import { useNavigate } from 'react-router-dom'
-import { supabase } from '../Supabase/supabase.config'
+import { ContextProvider } from './context/Context'
 
 function App() {
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    supabase.auth.onAuthStateChange((event, session) => {
-      if (!session) {
-        navigate('/login')
-      } else {
-        navigate('/')
-      }
-    })
-  }, [])
   return (
-    <div>
+    <ContextProvider>
       <Nav />
       <Rutas />
-    </div>
+    </ContextProvider>
   )
 }
 
