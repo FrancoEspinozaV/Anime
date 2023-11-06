@@ -72,7 +72,7 @@ export function Nav() {
           <li>
             <Link to='/search-page'>Catalogo</Link>
           </li>
-          <li className='bordes'>
+
           {isAdmin ? <ModoAdmin /> : undefined}
           <li>
             {link ? (
