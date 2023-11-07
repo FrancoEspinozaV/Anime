@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 import { useContextPage } from '../src/context/Context'
 
 export function Rutas() {
-  const { getUser, user } = useContextPage()
+  const { getUser } = useContextPage()
   useEffect(() => {
     getUser()
   }, [])
@@ -20,7 +20,6 @@ export function Rutas() {
     const isLogin = localStorage.getItem('isLoggedIn')
     if (!isLogin) return <Navigate to='/' />
     const userRol = localStorage.getItem('useRol')
-    console.log(userRol)
     if (userRol !== '1') {
       return <Navigate to='/' />
     }
