@@ -12,49 +12,32 @@ const ModoAdmin = () => {
 
 export function Nav() {
   const [link, setLink] = useState(false)
-  const [sesion, setSesion] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
-    supabase.auth.onAuthStateChange((event, session) => {
-      if (!session) setLink(true)
-      else setLink(false)
-    })
-  }, [])
+    supabase.auth.onAuthStateChange(async (event, session) => {
+      if (session) {
+        setLink(true)
+        const {
+          data: { user },
+        } = await supabase.auth.getUser()
+        if (user !== null) {
+          const { data, error } = await supabase
+            .from('Permisos')
+            .select()
+            .eq('UUID', user.id)
 
-  useEffect(() => {
-    const permisosTable = async () => {
-      try {
-        supabase.auth.onAuthStateChange((event, session) => {
-          if (session) {
-            setSesion(true)
+          if (data[0].Rol === 1) {
+            setIsAdmin(true)
           } else {
-            setSesion(false)
-          }
-        })
-        if (sesion) {
-          const {
-            data: { user },
-          } = await supabase.auth.getUser()
-          if (user !== null) {
-            const { data, error } = await supabase
-              .from('Permisos')
-              .select()
-              .eq('UUID', user.id)
-
-            if (data[0].Rol === 1) {
-              setIsAdmin(true)
-            } else {
-              setIsAdmin(false)
-            }
+            setIsAdmin(false)
           }
         }
-      } catch (error) {
-        console.log(error)
+      } else {
+        setLink(false)
       }
-    }
-    permisosTable()
-  }, [sesion])
+    })
+  }, [])
 
   return (
     <header className='Header'>
@@ -75,7 +58,7 @@ export function Nav() {
 
           {isAdmin ? <ModoAdmin /> : undefined}
           <li>
-            {link ? (
+            {!link ? (
               <Link to='/login'>Ingresar</Link>
             ) : (
               <Link
