@@ -11,7 +11,6 @@ export function Admin() {
   ]
   const [generoBuscado, setGeneroBuscado] = useState('')
   const [generosSeleccionados, setGenerosSeleccionados] = useState([])
-  const [mostrar, setMostrar] = useState(false)
   const inputRef = useRef()
 
   const handleInputChange = (e) => {
