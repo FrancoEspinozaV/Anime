@@ -89,3 +89,13 @@
   border-left: solid #27084b 2px;
   border-right: solid #27084b 2px;
 }
+
+.checkboxPassword {
+  display: flex;
+  flex-direction: row;
+  color: white;
+}
+
+.checkboxPassword > input {
+  margin-right: 10px;
+}
