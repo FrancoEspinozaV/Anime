@@ -15,6 +15,8 @@ export function Login() {
   const [emptyEmail, setEmptyEmail] = useState(false)
   const [emptyPassword, setEmptyPassword] = useState(false)
   const [isValidPassword, setIsValidPassword] = useState(true)
+  const [isChecked, setIsChecked] = useState(false)
+
   const navigate = useNavigate()
 
   async function signUpNewUser(e) {
@@ -24,9 +26,6 @@ export function Login() {
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
-          options: {
-            redirectTo: 'https://mail.google.com/mail',
-          },
         })
         if (error) {
           console.log(error)
@@ -48,13 +47,18 @@ export function Login() {
         password,
       })
       if (error) console.log(error)
-
-      localStorage.setItem('isLoggedIn', true)
-      localStorage.setItem('useRol', 2)
-      navigate('/')
+      else {
+        localStorage.setItem('isLoggedIn', true)
+        localStorage.setItem('useRol', 2)
+        navigate('/')
+      }
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const handleClickCheckBox = (e) => {
+    setIsChecked(e.target.checked)
   }
 
   return (
@@ -86,10 +90,19 @@ export function Login() {
               setEmptyPassword(true)
             }
           }}
-          type='password'
+          type={isChecked ? 'text' : 'password'}
           className='input'
           placeholder='   Contraseña 🔒'
         />
+        <div className='checkboxPassword'>
+          <input
+            onChange={handleClickCheckBox}
+            type='checkbox'
+            name='paswword'
+            id='password'
+          />
+          <span>Mostrar contraseña</span>
+        </div>
         {emptyPassword ? <span>Escriba una contraseña</span> : undefined}
         {verification ? <MessageEmail /> : undefined}
         {!isValidPassword ? (
