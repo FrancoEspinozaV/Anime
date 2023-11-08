@@ -65,16 +65,16 @@ export function Nav() {
         </Link>
       </h1>
       <nav>
-        <ul>
-          <li className='bordes'>
+        <ul className='ListNav'>
+          <li className='colBor'>
             <Link to='/'>Home</Link>
           </li>
-          <li>
+          <li className='colBor'>
             <Link to='/search-page'>Catalogo</Link>
           </li>
 
           {isAdmin ? <ModoAdmin /> : undefined}
-          <li>
+          <li className='colBor'>
             {link ? (
               <Link to='/login'>Ingresar</Link>
             ) : (

@@ -8,10 +8,19 @@
   align-items: center;
 }
 
+.flex-container2 {
+  background-size: cover;
+  width: 100%;
+  height: 93.3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .Form {
   border: 2px solid black;
   background-color: rgb(32, 51, 68);
-  opacity: 0.97;
+  opacity: 0.999;
   color: black;
   width: auto;
   height: auto;
@@ -88,4 +97,125 @@
 .bordes {
   border-left: solid #27084b 2px;
   border-right: solid #27084b 2px;
+}
+
+.testito {
+  height: 500px;
+  width: 380px;
+  background-color: #101010;
+  border-radius: 5%;
+  box-shadow: 16px 14px 20px #0000008c;
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testito::before {
+  content: '';
+  position: absolute;
+  height: 650px;
+  width: 550px;
+  background-image: conic-gradient(rgb(60, 0, 255) 20deg, transparent 120deg);
+  animation: rotacion 2s linear infinite;
+}
+
+@keyframes rotacion {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.ListNav {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.colBor {
+  text-decoration: none;
+  display: block;
+  position: relative;
+}
+
+.colBor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: blue;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: all 0.5s;
+  box-shadow: 0 0 10px rgb(73, 73, 242), 0 0 40px rgb(73, 73, 242),
+    0 0 80px rgb(73, 73, 242);
+}
+
+.colBor::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: blue;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: all 0.5s;
+  box-shadow: 0 0 10px rgb(73, 73, 242), 0 0 40px rgb(73, 73, 242),
+    0 0 80px rgb(73, 73, 242);
+}
+
+.colBor:hover::before,
+.colBor:hover::after {
+  transform: scaleX(1);
+}
+
+.prueba:hover {
+  box-shadow: 0 0 10px rgb(17, 17, 90), 0 0 40px rgb(17, 17, 90),
+    0 0 80px rgb(17, 17, 90);
+}
+
+.slider {
+  background-size: cover;
+  width: 100%;
+  height: 93.3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: slide 20s infinite;
+}
+
+@keyframes slide {
+  0% {
+    background-image: linear-gradient(to bottom, #33ccff00 25%, #140327 100%),
+      url(../img/pokemon_wallpaper.png);
+  }
+  33% {
+    background-image: linear-gradient(to bottom, #33ccff00 25%, #140327 100%),
+      url(../img/op-wallpaper2.jpeg);
+  }
+  66% {
+    background-image: linear-gradient(to bottom, #33ccff00 25%, #140327 100%),
+      url(../img/jjk_wallpaper.jpg);
+  }
+  100% {
+    background-image: linear-gradient(to bottom, #33ccff00 25%, #140327 100%),
+      url(../img/mob100_wallpaper.jpeg);
+  }
+}
+
+.fade {
+  margin-top: 75%;
+  background: linear-gradient(0deg, #140327 64%, rgba(0, 0, 255, 0) 90%);
+  width: 100%;
+  height: 200vh;
+  position: absolute;
 }
