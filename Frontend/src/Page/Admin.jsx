@@ -1,77 +1,180 @@
-import { useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Buscar } from '../../component/Buscar'
+import { supabase } from '../../Supabase/supabase.config'
 import '../styles/Admin.css'
+import { PreIMG } from '../../component/PreIMG'
+import { useContextPage } from '../context/Context'
+/*
+TODO:
+  Click en el div rojo para mostrar,
+  Click en el div rojo para ocultar
+
+  Creo que es mejor cuando el input esta activo y ocultar
+  cuando el input no este activo
+
+  Ademas ver menu intercartivo para ver el css
+  de ocultar y mostrar
+*/
 
 export function Admin() {
-  const generosDisponibles = [
+  const generos = [
     'Terror',
     'Ciencia Ficción',
     'Romance',
     'Drama',
     'Comedia',
+    'Vampiros',
   ]
-  const [generoBuscado, setGeneroBuscado] = useState('')
-  const [generosSeleccionados, setGenerosSeleccionados] = useState([])
-  const [mostrar, setMostrar] = useState(false)
-  const inputRef = useRef()
+  const tituloGenero = 'Generos'
+  const tipo = ['Serie', 'Ova', 'Pelicula']
+  const tituloTipo = 'Tipo'
+  const [selectedName, setSelectedName] = useState('')
+  const [selectedTipo, setSelectedTipo] = useState('')
+  const [selectedGenero, setSelectedGenero] = useState('')
+  const [selectedCap, setSelectedCap] = useState('')
+  const [selectedTemp, setSelectedTemp] = useState('')
+  const [selectedFile, setSelectedFile] = useState(null)
+  const [fullLoad, setFullLoad] = useState(false)
+  const [dataLoad, setDataLoad] = useState({})
 
-  const handleInputChange = (e) => {
-    setGeneroBuscado(e.target.value)
+  const { getLastChapters } = useContextPage()
+  useEffect(() => {
+    getLastChapters()
+  }, [])
+
+  const handleTipoChange = (tipo) => {
+    setSelectedTipo(tipo)
   }
 
-  const agregarGenero = (genero) => {
-    if (!generosSeleccionados.includes(genero)) {
-      setGenerosSeleccionados([...generosSeleccionados, genero])
-      setGeneroBuscado('')
+  const handleGeneroChange = (genero) => {
+    setSelectedGenero(genero)
+  }
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0]
+    setSelectedFile(file)
+  }
+
+  const handleNameChange = (name) => {
+    setSelectedName(name)
+  }
+
+  const handleCapChange = (cap) => {
+    setSelectedCap(cap)
+  }
+
+  const handleTempChange = (temp) => {
+    setSelectedTemp(temp)
+  }
+  const handleFileSubmit = async (event) => {
+    event.preventDefault()
+    if (selectedFile) {
+      const URL =
+        'https://tamhzrgwhidditleuukd.supabase.co/storage/v1/object/public/IMG'
+
+      const { data, error } = await supabase.storage
+        .from('IMG')
+        .upload(`public/${selectedFile.name}`, selectedFile, {
+          upsert: false,
+        })
+
+      if (error) {
+        console.log(error)
+        if (error.error === 'Duplicate') {
+          const { data: dataStorage } = supabase.storage
+            .from('IMG')
+            .getPublicUrl(`public/${selectedFile.name}`)
+          const DataURL = {
+            // aplicar un refactor
+            Nombre: selectedName,
+            Tipo: selectedTipo[0], // por ahora esta [0] quitar
+            Generos: selectedGenero.join(','),
+            URL: dataStorage.publicUrl,
+            Temporada: selectedTemp,
+            Capitulo: selectedCap,
+          }
+          setDataLoad(DataURL)
+          const { error: errorInsert } = await supabase
+            .from('InfoIMG')
+            .insert(DataURL)
+
+          if (errorInsert) console.log(errorInsert)
+          setFullLoad(true)
+        }
+      } else {
+        const DataURL = {
+          Nombre: selectedName,
+          Tipo: selectedTipo[0], // por ahora esta [0] quitar
+          Generos: selectedGenero.join(','),
+          URL: `${URL}/${data.path}`,
+          Temporada: selectedTemp,
+          Capitulo: selectedCap,
+        }
+        setDataLoad(DataURL)
+
+        const { error: errorInsert } = await supabase
+          .from('InfoIMG')
+          .insert(DataURL)
+        if (errorInsert) console.log(errorInsert)
+        setFullLoad(true)
+      }
+    } else {
+      console.log('Ningún archivo seleccionado')
     }
   }
-
-  const handleClick = () => {
-    inputRef.current.focus()
-  }
-
-  const quitarGenero = (genero) => {
-    const newGeneros = generosSeleccionados.filter((g) => g !== genero)
-    setGenerosSeleccionados(newGeneros)
-  }
   return (
-    <div>
-      <label htmlFor='Genero'>Genero</label>
-      <div onClick={handleClick} style={{ border: '1px solid red' }}>
-        <ul>
-          {generosSeleccionados.map((genero) => (
-            <li
-              style={{ cursor: 'pointer' }}
-              onClick={() => quitarGenero(genero)}
-              key={genero}
-            >
-              {genero} ❌
-            </li>
-          ))}
-        </ul>
+    <>
+      <form id='AnimeForm'>
+        <label htmlFor='nombre'>Nombre</label>
         <input
-          ref={inputRef}
+          onChange={(e) => handleNameChange(e.target.value)}
+          placeholder='Nombre'
           type='text'
-          placeholder='Buscar género'
-          value={generoBuscado}
-          onChange={handleInputChange}
         />
-      </div>
-
-      <ul>
-        {generosDisponibles
-          .filter((genero) =>
-            genero.toLowerCase().includes(generoBuscado.toLowerCase())
-          )
-          .map((genero) => (
-            <li
-              style={{ cursor: 'pointer' }}
-              key={genero}
-              onClick={() => agregarGenero(genero)}
-            >
-              {genero}
-            </li>
-          ))}
-      </ul>
-    </div>
+        <label htmlFor='Cap'>Numero de Capitulo</label>
+        <input
+          onChange={(e) => handleCapChange(e.target.value)}
+          placeholder='Numero de Capitulo'
+          type='number'
+        />
+        <label htmlFor='Temp'>Numero de Temporada</label>
+        <input
+          onChange={(e) => handleTempChange(e.target.value)}
+          placeholder='Numero de Temporada'
+          type='number'
+        />
+        <Buscar // cambiar este a solo 1 selección
+          arrayOptions={tipo}
+          title={tituloTipo}
+          onSelectionChange={handleTipoChange}
+        />
+        <Buscar
+          arrayOptions={generos}
+          title={tituloGenero}
+          onSelectionChange={handleGeneroChange}
+        />
+        <input type='file' onChange={handleFileChange} />
+        <button onClick={handleFileSubmit}>Enviar</button>
+      </form>
+      {fullLoad ? <PreIMG data={dataLoad} /> : undefined}
+    </>
   )
 }
+
+/*
+Proceso de subida de archivos 
+
+TODO:
+  - ✅Crear un componente para mostrar el contenido subido 
+    Nombre, imagen tal vez
+
+  - ❌ Arreglar getListChapters no funciona bien con el useEffect
+
+  - ANTES DE TODO: 
+   ✅-> ver si funciona, 
+   ❌-> si funciona empezar hacer validaciones, tales como
+    meter al menos un genero, selecionar el tipo
+
+  - ❌CAMBIAR el TIPO solo se debe seleccionar un solo tipo 
+  ¿De qué sirve tener un tipo serie/pelicula? 
+*/

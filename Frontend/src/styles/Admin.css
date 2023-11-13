@@ -5,3 +5,8 @@
 .mostrar {
   display: block;
 }
+
+#AnimeForm {
+  display: flex;
+  flex-direction: column;
+}
