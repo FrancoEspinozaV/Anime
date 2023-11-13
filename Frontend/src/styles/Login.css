@@ -22,23 +22,20 @@
   background-color: rgb(32, 51, 68);
   opacity: 0.999;
   color: black;
-  width: auto;
-  height: auto;
-  line-height: 120px;
-  margin: 5px;
   border-radius: 5%;
   text-align: center;
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
+  margin: 5px 5px 5px 5px;
 }
 
 .input {
   height: 25px;
   width: 220px;
   border-radius: 10px;
-  margin: 0px 50px 20px 50px;
+  margin-bottom: 30px;
 }
 
 .Large {
@@ -110,8 +107,6 @@
 }
 
 .testito {
-  height: 500px;
-  width: 380px;
   background-color: #101010;
   border-radius: 5%;
   box-shadow: 16px 14px 20px #0000008c;
@@ -228,4 +223,124 @@
   width: 100%;
   height: 200vh;
   position: absolute;
+}
+
+.alerta {
+  color: red;
+  margin-top: -25px;
+  margin-bottom: 20px;
+}
+
+.Alertas {
+  display: flex;
+  flex-direction: column;
+}
+/*------ Settings ------*/
+.container {
+  --color: #a5a5b0;
+  --size: 30px;
+  display: flex;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  fill: var(--color);
+}
+
+.container .eye {
+  animation: keyframes-fill 0.5s;
+  margin-right: -50px;
+  margin-left: 10px;
+}
+
+.container .eye-slash {
+  animation: keyframes-fill 0.5s;
+  margin-right: -50px;
+  margin-left: 10px;
+  display: none;
+}
+
+/* ------ On check event ------ */
+.container input:checked ~ .eye {
+  display: none;
+}
+
+.container input:checked ~ .eye-slash {
+  display: block;
+}
+
+/* ------ Hide the default checkbox ------ */
+.container input {
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.Flex-X {
+  display: flex;
+  flex-direction: row;
+}
+
+/* TRY */
+
+button {
+  width: 10em;
+  position: relative;
+  height: 3.5em;
+  border: 3px ridge #149cea;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  transition: 1s;
+  border-radius: 0.3em;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 3%;
+  width: 95%;
+  height: 40%;
+  background-color: rgb(32, 51, 68);
+  transition: 0.5s;
+  transform-origin: center;
+}
+
+button::before {
+  content: '';
+  transform-origin: center;
+  position: absolute;
+  top: 80%;
+  left: 3%;
+  width: 95%;
+  height: 40%;
+  background-color: rgb(32, 51, 68);
+  transition: 0.5s;
+}
+
+button:hover::before,
+button:hover::after {
+  transform: scale(0);
+}
+
+button:hover {
+  box-shadow: inset 0px 0px 25px #1479ea;
 }
