@@ -12,7 +12,8 @@ export const useContextPage = () => {
 export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
-
+  const [lastChapters, setLastChapters] = useState([])
+  const [loadingChapters, setLoadingChapters] = useState(false)
   // mostrar modal de carga
   const getUser = async () => {
     setLoading(true)
@@ -36,8 +37,29 @@ export const ContextProvider = ({ children }) => {
     setLoading(false)
   }
 
+  const getLastChapters = async (limit = 10) => {
+    console.log('ejecutado')
+    const { data, error } = await supabase
+      .from('InfoIMG')
+      .select('Nombre, Capitulo, URL')
+      .order('created_at', { ascending: false })
+      .limit(limit)
+
+    console.log(data)
+    setLastChapters(data)
+  }
+
   return (
-    <Context.Provider value={{ getUser, user, loading }}>
+    <Context.Provider
+      value={{
+        getUser,
+        user,
+        loading,
+        getLastChapters,
+        lastChapters,
+        loadingChapters,
+      }}
+    >
       {children}
     </Context.Provider>
   )
