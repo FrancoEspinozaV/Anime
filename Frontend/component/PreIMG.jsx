@@ -1,5 +1,5 @@
 export function PreIMG({ data }) {
-  const { URL, Nombre, Capitulo } = data
+  const { URL, Nombre, Capitulo, Descripcion } = data
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <img
@@ -7,6 +7,7 @@ export function PreIMG({ data }) {
         src={`${URL}`}
         alt={`Imagen de ${Nombre}`}
       />
+      <span>{Descripcion}</span>
       <span>
         {Nombre} {Capitulo}
       </span>

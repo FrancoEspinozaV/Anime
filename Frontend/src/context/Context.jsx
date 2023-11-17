@@ -41,7 +41,7 @@ export const ContextProvider = ({ children }) => {
     console.log('ejecutado')
     const { data, error } = await supabase
       .from('InfoIMG')
-      .select('Nombre, Capitulo, URL')
+      .select('Nombre, Capitulo, URL, Descripcion')
       .order('created_at', { ascending: false })
       .limit(limit)
 
