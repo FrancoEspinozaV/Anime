@@ -4,17 +4,6 @@ import { supabase } from '../../Supabase/supabase.config'
 import '../styles/Admin.css'
 import { PreIMG } from '../../component/PreIMG'
 import { useContextPage } from '../context/Context'
-/*
-TODO:
-  Click en el div rojo para mostrar,
-  Click en el div rojo para ocultar
-
-  Creo que es mejor cuando el input esta activo y ocultar
-  cuando el input no este activo
-
-  Ademas ver menu intercartivo para ver el css
-  de ocultar y mostrar
-*/
 
 export function Admin() {
   const generos = [
@@ -160,21 +149,3 @@ export function Admin() {
     </>
   )
 }
-
-/*
-Proceso de subida de archivos 
-
-TODO:
-  - ✅Crear un componente para mostrar el contenido subido 
-    Nombre, imagen tal vez
-
-  - ❌ Arreglar getListChapters no funciona bien con el useEffect
-
-  - ANTES DE TODO: 
-   ✅-> ver si funciona, 
-   ❌-> si funciona empezar hacer validaciones, tales como
-    meter al menos un genero, selecionar el tipo
-
-  - ❌CAMBIAR el TIPO solo se debe seleccionar un solo tipo 
-  ¿De qué sirve tener un tipo serie/pelicula? 
-*/
