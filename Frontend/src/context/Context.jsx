@@ -38,7 +38,6 @@ export const ContextProvider = ({ children }) => {
   }
 
   const getLastChapters = async (limit = 10) => {
-    console.log('ejecutado')
     const { data, error } = await supabase
       .from('InfoIMG')
       .select('Nombre, Capitulo, URL, Descripcion')
