@@ -3,13 +3,7 @@ import { Buscar } from '../../component/Buscar'
 import { supabase } from '../../Supabase/supabase.config'
 import '../styles/Admin.css'
 import { PreIMG } from '../../component/PreIMG'
-/*
-TODO:
-  Buscar (componente) => eliminarlo
-  limitarlo a 1 (quitar componenete buscar y crear un input de sel multiple)
-
-
-*/
+import { useContextPage } from '../context/Context'
 
 export function Admin() {
   const generos = [
@@ -150,21 +144,3 @@ export function Admin() {
     </>
   )
 }
-
-/*
-Proceso de subida de archivos 
-
-TODO:
-  - ✅Crear un componente para mostrar el contenido subido 
-    Nombre, imagen tal vez
-
-  - ❌ Arreglar getListChapters no funciona bien con el useEffect
-
-  - ANTES DE TODO: 
-   ✅-> ver si funciona, 
-   ❌-> si funciona empezar hacer validaciones, tales como
-    meter al menos un genero, selecionar el tipo
-
-  - ❌CAMBIAR el TIPO solo se debe seleccionar un solo tipo 
-  ¿De qué sirve tener un tipo serie/pelicula? 
-*/
