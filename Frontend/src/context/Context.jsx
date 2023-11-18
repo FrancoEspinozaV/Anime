@@ -13,6 +13,7 @@ export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
   const [lastChapters, setLastChapters] = useState([])
+  const [morePopularAnime, setMorePopularAnime] = useState([])
   const [loadingChapters, setLoadingChapters] = useState(false)
   // mostrar modal de carga
   const getUser = async () => {
@@ -44,10 +45,20 @@ export const ContextProvider = ({ children }) => {
       .order('created_at', { ascending: false })
       .limit(limit)
 
-    console.log(data)
     setLastChapters(data)
   }
 
+  const getMorePopularAnime = async () => {
+    const { data: dataID } = await supabase.from('MorePopular').select('IdInfo')
+    const arrayMorePopular = dataID.map((objeto) => objeto.IdInfo)
+
+    const { data, error } = await supabase
+      .from('InfoIMG')
+      .select('Nombre, Capitulo, URL, Descripcion')
+      .in('id', arrayMorePopular)
+
+    setMorePopularAnime(data)
+  }
   return (
     <Context.Provider
       value={{
@@ -57,6 +68,8 @@ export const ContextProvider = ({ children }) => {
         getLastChapters,
         lastChapters,
         loadingChapters,
+        getMorePopularAnime,
+        morePopularAnime,
       }}
     >
       {children}
