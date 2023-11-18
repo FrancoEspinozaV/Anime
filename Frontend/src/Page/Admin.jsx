@@ -1,19 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Buscar } from '../../component/Buscar'
 import { supabase } from '../../Supabase/supabase.config'
 import '../styles/Admin.css'
 import { PreIMG } from '../../component/PreIMG'
-import { useContextPage } from '../context/Context'
 /*
 TODO:
-  Click en el div rojo para mostrar,
-  Click en el div rojo para ocultar
+  Buscar (componente) => eliminarlo
+  limitarlo a 1 (quitar componenete buscar y crear un input de sel multiple)
 
-  Creo que es mejor cuando el input esta activo y ocultar
-  cuando el input no este activo
 
-  Ademas ver menu intercartivo para ver el css
-  de ocultar y mostrar
 */
 
 export function Admin() {
@@ -36,11 +31,6 @@ export function Admin() {
   const [selectedFile, setSelectedFile] = useState(null)
   const [fullLoad, setFullLoad] = useState(false)
   const [dataLoad, setDataLoad] = useState({})
-
-  const { getLastChapters } = useContextPage()
-  useEffect(() => {
-    getLastChapters()
-  }, [])
 
   const handleTipoChange = (tipo) => {
     setSelectedTipo(tipo)

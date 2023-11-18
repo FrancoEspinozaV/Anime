@@ -1,13 +1,16 @@
 export function PreIMG({ data }) {
   const { URL, Nombre, Capitulo } = data
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className='Alertas test2'>
       <img
-        style={{ width: '150px' }}
+        className='img-home preview'
         src={`${URL}`}
         alt={`Imagen de ${Nombre}`}
       />
-      <span>
+      <span className='abs'>
+        {Nombre} {Capitulo}
+      </span>
+      <span className='name-anime'>
         {Nombre} {Capitulo}
       </span>
     </div>

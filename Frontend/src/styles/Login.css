@@ -8,15 +8,6 @@
   align-items: center;
 }
 
-.flex-container2 {
-  background-size: cover;
-  width: 100%;
-  height: 93.3vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .Form {
   border: 2px solid black;
   background-color: rgb(32, 51, 68);
@@ -291,6 +282,7 @@
 .Flex-X {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 /* TRY */
@@ -343,4 +335,46 @@ button:hover::after {
 
 button:hover {
   box-shadow: inset 0px 0px 25px #1479ea;
+}
+
+.bg-img {
+  background-image: url('../img/op-wallpaper2.jpeg');
+  width: 100%;
+  height: 93.3vh;
+}
+
+.grid-home {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.img-home {
+  width: 200px;
+  height: 200px;
+}
+
+.img-home:hover {
+  background-color: #140327;
+}
+
+.test2 {
+  position: relative;
+}
+
+.abs {
+  position: absolute;
+  background-color: #140327ed;
+  color: white;
+  display: none;
+}
+
+.test2:hover .abs {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.name-anime {
+  color: white;
 }
