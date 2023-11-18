@@ -10,14 +10,16 @@ export function Home() {
   }, [])
   return (
     <div className='bg-img'>
-      <h2>Ejemplo de como traer cosas de la base de datos</h2>
-      <ul className='grid-home'>
-        {lastChapters.map((data, index) => (
-          <li key={index} className='img-home'>
-            <PreIMG data={data} />
-          </li>
-        ))}
-      </ul>
+      <div className='bg-gradient'>
+        <h2>Ejemplo de como traer cosas de la base de datos</h2>
+        <ul className='grid-home'>
+          {lastChapters.map((data, index) => (
+            <li key={index} className='img-home'>
+              <PreIMG data={data} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }

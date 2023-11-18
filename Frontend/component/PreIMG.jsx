@@ -7,9 +7,11 @@ export function PreIMG({ data }) {
         src={`${URL}`}
         alt={`Imagen de ${Nombre}`}
       />
-      <span>{Descripcion}</span>
       <span className='abs'>
-        {Nombre} {Capitulo}
+        {Nombre}
+        <br />
+        <br />
+        {Descripcion}
       </span>
       <span className='name-anime'>
         {Nombre} {Capitulo}
