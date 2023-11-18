@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Buscar } from '../../component/Buscar'
 import { supabase } from '../../Supabase/supabase.config'
 import '../styles/Admin.css'
 import { PreIMG } from '../../component/PreIMG'
-import { useContextPage } from '../context/Context'
 
 export function Admin() {
   const generos = [
@@ -26,11 +25,6 @@ export function Admin() {
   const [selectedFile, setSelectedFile] = useState(null)
   const [fullLoad, setFullLoad] = useState(false)
   const [dataLoad, setDataLoad] = useState({})
-
-  const { getLastChapters } = useContextPage()
-  useEffect(() => {
-    getLastChapters()
-  }, [])
 
   const handleTipoChange = (tipo) => {
     setSelectedTipo(tipo)
