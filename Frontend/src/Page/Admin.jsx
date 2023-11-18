@@ -19,6 +19,7 @@ export function Admin() {
   const tituloTipo = 'Tipo'
   const [selectedName, setSelectedName] = useState('')
   const [selectedTipo, setSelectedTipo] = useState('')
+  const [selectedDescription, setSelectedDescription] = useState('')
   const [selectedGenero, setSelectedGenero] = useState('')
   const [selectedCap, setSelectedCap] = useState('')
   const [selectedTemp, setSelectedTemp] = useState('')
@@ -54,6 +55,10 @@ export function Admin() {
 
   const handleTempChange = (temp) => {
     setSelectedTemp(temp)
+  }
+
+  const handleDescriptionChange = (description) => {
+    setSelectedDescription(description)
   }
   const handleFileSubmit = async (event) => {
     event.preventDefault()
@@ -98,6 +103,7 @@ export function Admin() {
           URL: `${URL}/${data.path}`,
           Temporada: selectedTemp,
           Capitulo: selectedCap,
+          Descripcion: selectedDescription,
         }
         setDataLoad(DataURL)
 
@@ -131,6 +137,12 @@ export function Admin() {
           onChange={(e) => handleTempChange(e.target.value)}
           placeholder='Numero de Temporada'
           type='number'
+        />
+        <label htmlFor='Temp'>Descripción del anime</label>
+        <input
+          onChange={(e) => handleDescriptionChange(e.target.value)}
+          placeholder='Descripción del anime'
+          type='text'
         />
         <Buscar // cambiar este a solo 1 selección
           arrayOptions={tipo}
