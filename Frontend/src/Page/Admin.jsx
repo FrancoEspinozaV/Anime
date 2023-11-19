@@ -3,19 +3,9 @@ import { Buscar } from '../../component/Buscar'
 import { supabase } from '../../Supabase/supabase.config'
 import '../styles/Admin.css'
 import { PreIMG } from '../../component/PreIMG'
+import { animeInfo } from '../constantes'
 
 export function Admin() {
-  const generos = [
-    'Terror',
-    'Ciencia Ficción',
-    'Romance',
-    'Drama',
-    'Comedia',
-    'Vampiros',
-  ]
-  const tituloGenero = 'Generos'
-  const tipo = ['Serie', 'Ova', 'Pelicula']
-  const tituloTipo = 'Tipo'
   const [selectedName, setSelectedName] = useState('')
   const [selectedTipo, setSelectedTipo] = useState('')
   const [selectedDescription, setSelectedDescription] = useState('')
@@ -139,13 +129,13 @@ export function Admin() {
           type='text'
         />
         <Buscar // cambiar este a solo 1 selección
-          arrayOptions={tipo}
-          title={tituloTipo}
+          arrayOptions={animeInfo.tipo}
+          title={animeInfo.tituloTipo}
           onSelectionChange={handleTipoChange}
         />
         <Buscar
-          arrayOptions={generos}
-          title={tituloGenero}
+          arrayOptions={animeInfo.generos}
+          title={animeInfo.tituloGenero}
           onSelectionChange={handleGeneroChange}
         />
         <input type='file' onChange={handleFileChange} />
